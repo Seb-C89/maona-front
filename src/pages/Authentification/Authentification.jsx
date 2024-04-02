@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const Authentification = () => {
-  const [mail, setMail] = useState(document.cookie.split("; ").find((row) => row.startsWith("mail="))?.split("=")[1]);
+  const [mail, setMail] = useState(decodeURIComponent(document.cookie.split("; ").find((row) => row.startsWith("mail="))?.split("=")[1]));
   
 return (
   <main >
