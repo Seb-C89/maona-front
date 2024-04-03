@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react';
 
 const Authentification = () => {
-  const [mail, setMail] = useState(decodeURIComponent(document.cookie.split("; ").find((row) => row.startsWith("mail="))?.split("=")[1]));
+  const [mail, setMail] = useState(() => {
+    let mail = document.cookie.split("; ").find((row) => row.startsWith("mail="))?.split("=")[1]
+    // if mail is undefinided decodeURIComponent return a string containing undefinited ...
+    // so check it to avoid undefinited become "undefinited" and therefore become definited ...
+    if (mail)
+      mail = decodeURIComponent(mail)
+    return mail
+  });
   
 return (
   <main >
