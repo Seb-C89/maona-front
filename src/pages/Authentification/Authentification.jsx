@@ -9,18 +9,18 @@ const Authentification = () => {
       mail = decodeURIComponent(mail)
     return mail
   });
-  
-return (
-  <main >
-    <h1>Auth</h1>
-    <p> OAuth 2.0</p>
-    {
-      mail
-      ? <p>YOU ARE {mail}</p>
-      : <p><a href="http://localhost:8000/authentification/auth">GITHUB OAuth: CLICK HERE</a></p>
-    }
-  </main>
-);
+
+  return (
+    <main >
+      <h1>Auth</h1>
+      <p> OAuth 2.0</p>
+      {
+        mail
+        ? <p>YOU ARE {mail}</p>
+        : <p><a href={`http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}/authentification/auth`}>GITHUB OAuth: CLICK HERE</a></p>
+      }
+    </main>
+  );
 };
 
 export default Authentification;
